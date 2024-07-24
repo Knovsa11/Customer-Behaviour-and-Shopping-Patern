@@ -1,0 +1,30 @@
+
+URL Dataset : https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset/data
+
+# Membuat tabel di postgresql
+create table table_m3 (
+	"Customer ID" INT,
+    Age INT,
+    Gender VARCHAR,
+    "Item Purchased" VARCHAR,
+    Category VARCHAR,
+    "Purchase Amount (USD)" INT,
+    Location VARCHAR,
+    Size CHAR(2),
+    Color VARCHAR,
+    Season VARCHAR,
+    "Review Rating" FLOAT,
+    "Subscription Status" VARCHAR,
+    "Shipping Type" VARCHAR,
+    "Discount Applied" VARCHAR,
+    "Promo Code Used" VARCHAR,
+    "Previous Purchases" INT,
+    "Payment Method" VARCHAR,
+    "Frequency of Purchases" VARCHAR
+);
+
+# Melakukan copy dataset di database postgre_docker
+COPY table_m3("Customer ID", Age, Gender, "Item Purchased", Category, "Purchase Amount (USD)", Location, Size, Color, Season, "Review Rating", "Subscription Status", "Shipping Type", "Discount Applied", "Promo Code Used", "Previous Purchases", "Payment Method", "Frequency of Purchases")
+FROM '/var/lib/postgresql/data/P2M3_kelvin_rizky_data_raw.csv'
+DELIMITER ','
+CSV HEADER;
